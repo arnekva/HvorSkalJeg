@@ -2,204 +2,54 @@
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Nedbetalingsplan</title>
+    <title>Hvilket rom</title>
     <meta charset="utf-8" />
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="googlebot" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Hvor mye koster lånet i måneden? Bruk denne lånekalkulatoren til å finne ut!" />
-    <meta name="keywords" content="lånekalkulator, finans, fintech, Stacc, kodeoppgave" />
-    <meta name="author" content="Arne Kvaleberg" />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <!--  <link href="css/index.css" rel="stylesheet"> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-    <link href="css/index.css" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="img/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="manifest" href="img/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/range.css">
-    <link rel="stylesheet" type="text/css" href="css/scroll.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
+    body{
+      background-color: #00043d;
+      color: #ff8400;
+      font-size:2.7rem;
+      font-family: sans-serif;
+    }
+    #rom{
+      font-size: 7rem;
+      margin-top:40px;
+    }
+    .container{
+      width:100%;
+      text-align: center;
+      vertical-align: center;
+      margin-top:150px;
+      height:100%;
+    }
+    .mylink{
+      margin-bottom:0px;
+      bottom:0;
+    }
+    .error-msg{
+      font-size:1.7rem;
+      color:#ff4530;
+      margin-bottom:50px;
+    }
 
     </style>
 </head>
 
 <body>
-    <header class="masthead">
-        <div class="title-container">
-            <h1 class="welcome-title">Kodeoppgave</h1>
-            <h2 class="subtitle">Lånekalkulator</h2>
-        </div>
-    </header>
-    <div class="main-container" id="scrollhere">
-
-        <div id="chartContainer">
-            <!-- <h3 class="maintitle">Fyll inn skjemaet under for lånet du ønsker å ta</h3> -->
-        </div>
-
-        <div class="bootstrap-iso">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <form class="staccskjema" onsubmit="return false">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-25">
-                                        <label for="belop">Beløp: </label>
-                                    </div>
-                                    <div class="col-75">
-                                        <input class="input-stacc" type="text" id="belop" name="formdata" placeholder="Beløp å låne" />
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-25">
-                                        <label for="utbetalingdate">Utbetalingsdato: </label>
-                                    </div>
-                                    <div class="col-75">
-                                        <input class="form-control input-stacc utbetalingsdato" id="utbetalingdate" name="date" placeholder="Ferdigbetalt til" type="text" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-25">
-                                        <label for="date">Ferdig betalt innen: </label>
-                                    </div>
-                                    <div class="col-75">
-                                        <input class="form-control input-stacc innbetalingsdato" id="date" name="date" placeholder="Ferdigbetalt til" type="text" />
-                                    </div>
-                                </div>
-                                <div class="row" id="row-hidden">
-                                    <div class="col-25">
-                                        <label for="belop">Endre år:</label>
-                                    </div>
-                                    <div class="col-75">
-                                        <span class="smooth" id="range-span"><input class="daterange" id="daterange"   type="range" min="-10" max="10" default="0" /><p class="rangetext" id="rangetext">Dra slideren for å gå opp eller ned noen år</p></span>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-25">
-                                        <label for="forstebetalingdate">Første nedbetalingsmåned: </label>
-                                    </div>
-                                    <div class="col-75">
-                                        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-                                        <input class="form-control input-stacc forstebetaling" id="forstebetalingdate" name="date" placeholder="Ferdigbetalt til" type="text" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-25">
-                                        <label for="Nominellrente">Nominellrente: </label>
-                                    </div>
-                                    <div class="col-75">
-                                        <input class="form-control input-stacc innbetalingsdato" id="Nominellrente" name="Nominellrente" value="3%" type="text" disabled/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-25">
-                                        <label for="Termingebyr">Termingebyr: </label>
-                                    </div>
-                                    <div class="col-75">
-                                        <input class="form-control input-stacc innbetalingsdato" id="Termingebyr" name="Termingebyr" value="30" type="text" disabled/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-25">
-                                        <label for="belop">Månedslønn brutto (frivillig): </label>
-                                    </div>
-                                    <div class="col-75">
-                                        <span><input class="input-stacc" type="text" id="mndlonn" name="formdata" placeholder="25000"/><input type="submit" name="submit" value="Beregn"/></span>
-                                    </div>
-
-                                </div>
-
-                                <div class="slider-container" id="faktaboks-right">
-
-                                </div>
-
-                            </div>
-                            <input type="hidden" id="dateForRange" value="" />
-                            <div class="form-group">
-
-                            </div>
-                            <p class="faktatekst warningtext" id="warningtext"></p>
-                        </form>
-                        <div class="canvas-container">
-                            <canvas id="canvas"></canvas>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="gjem-meg" id="gjem-meg">
-        <h1 class="maintitle">Velkommen til lånekalkulatoren.</h1>
-        <h2 class="maintitle">Implementert gjennom Stacc sin API</h2>
-        </div>
-        <div id="faktaboks-container" class="faktaboks-container">
-            <div class="flex-container">
-
-                <div>
-                    <div class="column">
-
-                        <h3 class="faktaheader">Varighet</h3>
-                        <p class="faktatekst" id="antaar"></p>
-                    </div>
-                </div>
-                <div>
-                    <div class="column">
-                        <h3 class="faktaheader">Per måned</h3>
-                        <p class="faktatekst" id="averagepayment"></p>
-                    </div>
-                </div>
-                <div>
-                    <div class="column">
-                        <h3 class="faktaheader">Renter</h3>
-                        <p class="faktatekst" id="rentepm"></p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a class="top-link hide" href="" id="js-top">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
-                <path d="M12 6H0l6-6z" />
-            </svg>
-        </a>
-
-        <script>
-            document.title = "Nedbetalingsplan"
-            console.log("Oppdaterte title")
-        </script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-        <script src="js/datoinit.js"></script>
-        <script src="js/ajaxHandler.js"></script>
-        <script src="js/topscroll.js"></script>
-    </div>
+  <div class="container">
+    <div class="error-msg"id="error"></div>
+<div id="fag"></div>
+<div id="type"></div>
+<div id="rom"></div>
+<div id="tid"></div>
 <div id="testDiv" style="display:none"></div>
-</body>
 
+</div>
+<input class="mylink" id="timeedit-link"type="text" />
+<button onclick="save()">Lagre</button>
+</body>
+<script src="js/rom.js"></script>
 </html>
