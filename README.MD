@@ -6,4 +6,7 @@ Lag en offentlig lenke til din timeedit-timeplan, lim den inn i input-feltet så
 
 Du slipper å logge inn på timeedit noensinne igjen!
 
+## Nettsted
+
+Du kan finne siden på https://arnekvaleberg.com/hvorskaljeg 
 
