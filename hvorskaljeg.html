@@ -34,22 +34,48 @@
       color:#ff4530;
       margin-bottom:50px;
     }
-
+    .button {
+      background-color: #ff8400; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 18px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    .mainheader{
+      font-size:2.5rem;
+      font-weight:500;
+      margin-top:-100px !important;
+      color:#f5e000;
+      margin-bottom:100px;
+    }
+    #rom{
+      color: #ffc824;
+    }
+    #running{
+      margin-top:100px;
+      color: #f5e000;
+    }
     </style>
 </head>
 
 <body>
   <div class="container">
+    <h2 class="mainheader">Hvilket rom skal jeg på?</h2>
     <div class="error-msg"id="error"></div>
+
 <div id="fag"></div>
 <div id="type"></div>
 <div id="rom"></div>
 <div id="tid"></div>
+<div id="running"></div>
 <div id="testDiv" style="display:none"></div>
 
 </div>
 <input class="mylink" id="timeedit-link"type="text" />
-<button onclick="save()">Lagre</button>
+<button class="button"onclick="save()">Lagre</button>
 </body>
 <script src="js/rom.js"></script>
 </html>
