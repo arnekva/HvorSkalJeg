@@ -34,7 +34,7 @@ for(let i = 1; i<12;i++){
     if(newnode !== null){
       $('#running').html("Du har en pågående time: "+newnode.innerHTML.substr(8) + " (startet klokken " + newtime + ")");
     } else{
-      $('#running').html("Du har ingen pågående timer");
+      $('#running').html("");
     }
     firstrun = false;
   }
@@ -67,6 +67,7 @@ if(node === null){
 });
 
 function checkTime(time){
+  var date = new Date()
   if(time < 10){
     console.log("small number")
     time = '0' + time + ":" + "15"
@@ -77,6 +78,7 @@ function checkTime(time){
   return time;
 }
 function checkTimePrevious(time){
+  var date = new Date()
   if(time < 10){
     console.log("small number")
     time = time-1
